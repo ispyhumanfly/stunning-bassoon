@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.ts",
@@ -28,10 +29,15 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.json$/,
+        use: 'file-loader',
+        type: 'javascript/auto'
+      },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".ts", ".js"],
   },
   optimization: {
     splitChunks: {
@@ -43,5 +49,8 @@ module.exports = {
     new HtmlWebPackPlugin({
       title: "Excalibur Webpack Sample",
     }),
+    new CopyPlugin(
+        { patterns: [{ from: "./src/assets/Terrene.json", to: "./assets/Terrene.json"}, { from: "./src/assets/Terrene.tsx", to: "./assets/Terrene.tsx"}, { from: "./src/assets/tilemap.png", to: "./assets/tilemap.png"}]},
+    )
   ],
 };
