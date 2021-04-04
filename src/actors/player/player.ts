@@ -15,8 +15,6 @@ export class Player extends Actor {
 
     public onInitialize(engine: Engine) {
         this.addDrawing(Resources.Sword)
-
-        // this.actions.moveBy(400 * 1, 0, 100).moveBy(-400 * 1, 0, 100)
         
         engine.input.pointers.primary.on("move", (evt) => {
             this.pos.x = evt.worldPos.x
@@ -45,6 +43,5 @@ export class Player extends Actor {
                     break
             }
         })
-
     }
 }
