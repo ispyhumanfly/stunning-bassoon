@@ -42,22 +42,33 @@
     
 // });
 
-import { Actor, CollisionType, Color, Engine, vec } from "excalibur"
+import { Actor, CollisionType, Color, Engine, Input, vec } from "excalibur"
 
 const game = new Engine({
-    width: 800,
-    height: 600
+    width: window.screen.width - 25,
+    height: window.screen.height - 25,
+    backgroundColor: Color.DarkGray
 })
 
 const paddle = new Actor({
-    x: 150,
-    y: game.drawHeight - 40,
+    x: game.halfDrawWidth - 10,
+    y: game.halfDrawHeight - 10,
     width: 200,
     height: 20,
     // Let's give it some color with one of the predefined
     // color constants
     color: Color.Chartreuse,
   });
+
+
+let animal = new Actor({
+    x: 10,
+    y: game.drawHeight - 20,
+    width: 100,
+    height: 100,
+    color: Color.Green
+})
+
 
 paddle.body.collisionType = CollisionType.Fixed;
 
@@ -104,6 +115,30 @@ ball.on("postupdate", () => {
 
 ball.body.collisionType = CollisionType.Passive
 
+
+game.input.keyboard.on("hold",(press) => {
+
+    switch(press.key) {
+        case Input.Keys.Up:
+        case Input.Keys.W:
+            animal.pos.y = animal.pos.y - 10
+            break
+        case Input.Keys.Down:
+        case Input.Keys.S:
+            animal.pos.y = animal.pos.y + 10
+            break
+        case Input.Keys.Left:
+        case Input.Keys.A:
+            animal.pos.x = animal.pos.x - 10
+            break
+        case Input.Keys.Right:
+        case Input.Keys.D:
+            animal.pos.x = animal.pos.x + 10
+            break
+    }
+})
+
+game.add(animal)
 game.add(paddle)
 game.add(ball)
 
