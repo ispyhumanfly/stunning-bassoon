@@ -10,11 +10,12 @@ export class Player extends Actor {
             color: new Color(255, 255, 255)
         });
 
-        this.body.collider.type = CollisionType.Active;
+        this.body.collisionType = CollisionType.Active;
     }
 
     public onInitialize(engine: Engine) {
-        this.addDrawing(Resources.Sword)
+        
+        this.graphics.add(Resources.Sword)
         
         engine.input.pointers.primary.on("move", (evt) => {
             this.pos.x = evt.worldPos.x

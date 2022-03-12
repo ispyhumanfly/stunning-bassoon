@@ -9,11 +9,14 @@ export class NPC extends Actor {
             height: 25,
             color: new Color(255, 255, 255)
         })
-        this.body.collider.type = CollisionType.Active
+        this.body.collisionType = CollisionType.Active
     }
 
     public onInitialize(engine: Engine) {
         // this.addDrawing(Resources.Sword)
-        this.actions.moveBy(400 * 1, 0, 100).moveBy(-400 * 1, 0, 100).repeatForever()
+        this.actions.repeatForever((repeatCtx) => {
+            repeatCtx.moveBy(400 * 1, 0, 100);
+            repeatCtx.moveBy(-400 * 1, 0, 100);
+        })
     }
 }
