@@ -1,15 +1,15 @@
-import { Scene, Engine } from "excalibur"
+import { Engine, Scene } from "excalibur"
 
 export class MainMenu extends Scene {
-    private _loaded: boolean = false
-  
-    /**
-     * Start-up logic, called once
-     */
-    public onInitialize(engine: Engine) {
-      // load scene-specific assets
-      engine.start().then(() => {
-        this._loaded = true
-      })
+    constructor() {
+        super()
+    }
+
+    onInitialize(_engine: Engine): void {
+        
+    }
+
+    onDeactivate(_oldScene: Scene, _newScene: Scene): void {
+        
     }
 }

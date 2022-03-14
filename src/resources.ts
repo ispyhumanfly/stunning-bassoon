@@ -1,14 +1,8 @@
-import { TextureLoader, TileMap } from 'excalibur';
-import sword from './images/sword.png';
-import { TiledResource, TiledMapFormat } from '@excaliburjs/excalibur-tiled'
-/**
- * Default global resource dictionary. This gets loaded immediately
- * and holds available assets for the game.
- */
+import { ImageSource } from "excalibur";
+import sword from "./assets/sword.png"; // for parcelv2 this is configured in the .parcelrc
 
-const Resources = {
-    Sword: sword,
-    MageCity: new TiledResource("./assets/Terrene.json")
-}
+let Resources = {
+  Sword: new ImageSource(sword)
+};
 
-export { Resources }
+export { Resources };
