@@ -13,7 +13,7 @@ class OldManSam extends Actor {
   onInitialize() {
     this.graphics.add(Resources.Sword.toSprite());
     this.on('pointerup', () => {
-      alert('yo');
+      alert('Heya, kid!');
     });
   }
 }
