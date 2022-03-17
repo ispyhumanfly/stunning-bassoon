@@ -1,9 +1,9 @@
 import { Engine, Loader } from "excalibur";
-import { OldManSam } from "./actors/OldManSam";
+import OldManSam from "./actors/npc/OldManSam"
 import { Resources } from "../resources";
-import { MainMenu } from "./scenes/MainMenu";
+import MainMenu from "./scenes/MainMenu";
 
-export class Terrene extends Engine {
+class Terrene extends Engine {
     constructor() {
         super({width: 800, height: 600});
     }
@@ -21,4 +21,4 @@ export class Terrene extends Engine {
     }
 }
 
-export const terrene = new Terrene();
+export default Terrene

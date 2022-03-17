@@ -1,7 +1,7 @@
 import { Actor, vec } from "excalibur";
-import { Resources } from "../../resources";
+import { Resources } from "../../../resources";
 
-export class OldManSam extends Actor {
+class OldManSam extends Actor {
   constructor() {
     super({
       pos: vec(150, 150),
@@ -17,3 +17,5 @@ export class OldManSam extends Actor {
     });
   }
 }
+
+export default OldManSam

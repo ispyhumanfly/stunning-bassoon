@@ -9,7 +9,12 @@
     "target": "es6",
     "module": "es6",
     "sourceMap": true,
-    "outDir": "./dist/"
+    "outDir": "./dist/",
+    "paths": {
+        "@thoughtpivot/*": ["./src/*"],
+        "@thoughtpivot": ["./src"]
+    },
   },
-  "exclude": ["**/*.tsx"]
+  "include": ["src/**/*.ts"],
+  "exclude": [".vscode", "node_modules", "dist", "**/*.spec.ts", "**/*.tsx"]
 }

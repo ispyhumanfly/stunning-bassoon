@@ -1,5 +1,5 @@
 {
-  "name": "excalibur-webpack",
+  "name": "@thoughtpivot/terrene",
   "version": "1.0.0",
   "private": true,
   "description": "a webpack starter for excaliburjs projects",

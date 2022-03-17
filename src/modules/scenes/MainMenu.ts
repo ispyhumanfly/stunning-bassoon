@@ -1,6 +1,6 @@
 import { Engine, Scene } from "excalibur"
 
-export class MainMenu extends Scene {
+class MainMenu extends Scene {
     constructor() {
         super()
     }
@@ -13,3 +13,5 @@ export class MainMenu extends Scene {
         
     }
 }
+
+export default MainMenu
