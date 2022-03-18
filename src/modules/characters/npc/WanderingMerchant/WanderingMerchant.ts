@@ -1,10 +1,10 @@
 import { Actor, Die, vec } from "excalibur";
-import { Resources } from "../../../resources";
+import { Resources } from "../../../../resources";
 
-class Goblin extends Actor {
+class WanderingMerchant extends Actor {
     constructor() {
         super({
-            pos: vec(245, 245),
+            pos: vec(100, 100),
             width: 100,
             height: 100,
         });
@@ -12,7 +12,9 @@ class Goblin extends Actor {
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
+        this.actions.blink(500, 190);
+        this.vel.x = 8;
     }
 }
 
-export default Goblin;
+export default WanderingMerchant;

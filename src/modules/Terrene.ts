@@ -1,11 +1,16 @@
 import { Engine, GlobalCoordinates, Loader, vec } from "excalibur";
-import OldManSam from "./actors/npc/OldManSam";
-import WanderingMerchant from "./actors/npc/WanderingMerchant";
+import OldManSam from "./characters/npc/OldManSam/OldManSam";
+import WanderingMerchant from "./characters/npc/WanderingMerchant/WanderingMerchant";
 import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
-import Sally from "./actors/npc/Sally";
-import Goblin from "./actors/npc/Goblin";
-import You from "./actors/You";
+import Sally from "./characters/npc/Sally/Sally";
+import Goblin from "./characters/npc/Goblin/Goblin";
+import You from "./characters/player/You/You";
+import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
+
+const asepriteSpriteSheet = new AsepriteResource(
+    "./actors/player/You/You.json"
+);
 
 class Terrene extends Engine {
     constructor() {
@@ -30,16 +35,24 @@ class Terrene extends Engine {
         const goblin = new Goblin();
         this.add(goblin);
 
-        // goblin.actions.easeTo(vec(100, 100), 1000);
-        goblin.actions.follow(wanderingMerchant, 100);
+        goblin.actions.easeTo(vec(100, 100), 1000).follow(sally, 100);
 
-        const loader = new Loader([Resources.Sword]);
+        const loader = new Loader([
+            Resources.OldManSam,
+            Resources.You,
+            Resources.Sword,
+            asepriteSpriteSheet,
+        ]);
         this.start(loader).then(() => {
             this.addScene("mainmenu", new MainMenu());
             this.add(oldManSam);
             this.add(wanderingMerchant);
             this.add(sally);
             this.add(goblin);
+
+            const anim = asepriteSpriteSheet.getAnimation("Loop");
+            you.graphics.use(anim);
+
             this.add(you);
         });
     }

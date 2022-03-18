@@ -1,5 +1,5 @@
 import { Actor, vec } from "excalibur";
-import { Resources } from "../../../resources";
+import { Resources } from "../../../../resources";
 
 class OldManSam extends Actor {
     constructor() {
@@ -11,7 +11,7 @@ class OldManSam extends Actor {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Sword.toSprite());
+        this.graphics.add(Resources.OldManSam.toSprite());
         // this.vel.y = 8;
     }
 }

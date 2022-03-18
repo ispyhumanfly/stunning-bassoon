@@ -31,6 +31,12 @@
         "**/*.tsbuildinfo": true,
         "lerna.json": true,
         "data": true,
+        "**/webpack*": true,
+        "**/.gitattributes": true,
+        "**/.travis.yml": true,
+        "**/renovate.json": true,
+        "**/tsconfig.json": true,
+        "**/dist": true,
         ".nvmrc": true
     },
     // Editor
