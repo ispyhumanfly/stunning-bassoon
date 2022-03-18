@@ -6,14 +6,13 @@ class Goblin extends Actor {
         super({
             pos: vec(245, 245),
             width: 100,
-            height: 100
+            height: 100,
         });
     }
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-
     }
 }
 
-export default Goblin
+export default Goblin;

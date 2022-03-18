@@ -1,4 +1,4 @@
-import { Engine, Loader } from "excalibur";
+import { Engine, GlobalCoordinates, Loader, vec } from "excalibur";
 import OldManSam from "./actors/npc/OldManSam";
 import WanderingMerchant from "./actors/npc/WanderingMerchant";
 import { Resources } from "../resources";
@@ -13,11 +13,16 @@ class Terrene extends Engine {
     }
 
     initialize() {
+        const you = new You();
+        this.add(you);
+
         const oldManSam = new OldManSam();
         this.add(oldManSam);
 
         const sally = new Sally();
         this.add(sally);
+
+        oldManSam.actions.follow(sally, 100);
 
         const wanderingMerchant = new WanderingMerchant();
         this.add(wanderingMerchant);
@@ -25,8 +30,8 @@ class Terrene extends Engine {
         const goblin = new Goblin();
         this.add(goblin);
 
-        const you = new You();
-        this.add(you);
+        // goblin.actions.easeTo(vec(100, 100), 1000);
+        goblin.actions.follow(wanderingMerchant, 100);
 
         const loader = new Loader([Resources.Sword]);
         this.start(loader).then(() => {

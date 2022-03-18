@@ -6,14 +6,14 @@ class OldManSam extends Actor {
         super({
             pos: vec(150, 150),
             width: 100,
-            height: 100
+            height: 100,
         });
     }
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-
+        // this.vel.y = 8;
     }
 }
 
-export default OldManSam
+export default OldManSam;

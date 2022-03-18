@@ -6,14 +6,15 @@ class WanderingMerchant extends Actor {
         super({
             pos: vec(100, 100),
             width: 100,
-            height: 100
+            height: 100,
         });
     }
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-
+        this.actions.blink(500, 190);
+        this.vel.x = 8;
     }
 }
 
-export default WanderingMerchant
+export default WanderingMerchant;
