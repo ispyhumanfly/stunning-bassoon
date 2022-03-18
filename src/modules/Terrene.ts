@@ -1,5 +1,5 @@
 import { Engine, Loader } from "excalibur";
-import OldManSam from "./actors/npc/OldManSam"
+import OldManSam from "./actors/npc/OldManSam";
 import WanderingMerchant from "./actors/npc/WanderingMerchant";
 import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
@@ -12,7 +12,6 @@ class Terrene extends Engine {
     }
 
     initialize() {
-
         const oldManSam = new OldManSam();
         this.add(oldManSam);
 
@@ -27,13 +26,13 @@ class Terrene extends Engine {
 
         const loader = new Loader([Resources.Sword]);
         this.start(loader).then(() => {
-            this.addScene("mainmenu", new MainMenu())
-            this.add(oldManSam)
-            this.add(wanderingMerchant)
-            this.add(sally)
-            this.add(goblin)
-        })
+            this.addScene("mainmenu", new MainMenu());
+            this.add(oldManSam);
+            this.add(wanderingMerchant);
+            this.add(sally);
+            this.add(goblin);
+        });
     }
 }
 
-export default Terrene
+export default Terrene;
