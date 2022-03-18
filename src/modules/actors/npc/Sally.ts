@@ -12,9 +12,7 @@ class Sally extends Actor {
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-        this.on('pointerup', () => {
-            alert('Hello, young child.');
-        });
+
     }
 }
 

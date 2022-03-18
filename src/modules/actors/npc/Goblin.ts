@@ -12,9 +12,7 @@ class Goblin extends Actor {
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-        this.on('pointerup', () => {
-            alert('ILL MURDER YOUR FAMILY!');
-        });
+
     }
 }
 

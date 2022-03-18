@@ -5,6 +5,7 @@ import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
 import Sally from "./actors/npc/Sally";
 import Goblin from "./actors/npc/Goblin";
+import You from "./actors/You";
 
 class Terrene extends Engine {
     constructor() {
@@ -24,6 +25,9 @@ class Terrene extends Engine {
         const goblin = new Goblin();
         this.add(goblin);
 
+        const you = new You();
+        this.add(you);
+
         const loader = new Loader([Resources.Sword]);
         this.start(loader).then(() => {
             this.addScene("mainmenu", new MainMenu());
@@ -31,6 +35,7 @@ class Terrene extends Engine {
             this.add(wanderingMerchant);
             this.add(sally);
             this.add(goblin);
+            this.add(you);
         });
     }
 }

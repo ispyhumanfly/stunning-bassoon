@@ -12,9 +12,7 @@ class WanderingMerchant extends Actor {
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
-        this.on('pointerup', () => {
-            alert('Want any swords, or any potions?');
-        });
+
     }
 }
 
