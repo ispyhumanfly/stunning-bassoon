@@ -1,21 +1,20 @@
 import { Engine, Actor, Die, Input, vec } from "excalibur";
 import { Resources } from "../../../../resources";
-// import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
+import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
 
-// const asepriteSpriteSheet = new AsepriteResource("./You.json");
+const asepriteSpriteSheet = new AsepriteResource("./You.json");
 
 class You extends Actor {
     constructor() {
         super({
             pos: vec(300, 300),
-            width: 100,
-            height: 100,
+            width: 128,
+            height: 128,
         });
     }
 
     onInitialize(engine: Engine) {
-        // this.graphics.add(Resources.You.toSprite());
-        // this.graphics.use(asepriteSpriteSheet);
+        this.graphics.use(asepriteSpriteSheet.getAnimation("Loop") as any);
 
         // engine.input.pointers.primary.on("move", (evt) => {
         //     this.pos.x = evt.worldPos.x;

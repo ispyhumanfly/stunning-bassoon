@@ -1,20 +1,21 @@
-import { Engine, GlobalCoordinates, Loader, vec } from "excalibur";
+import { DisplayMode, Engine, Loader, Sprite, vec } from "excalibur";
 import OldManSam from "./characters/npc/OldManSam/OldManSam";
 import WanderingMerchant from "./characters/npc/WanderingMerchant/WanderingMerchant";
 import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
 import Sally from "./characters/npc/Sally/Sally";
 import Goblin from "./characters/npc/Goblin/Goblin";
+
+import Gianuah, {
+    Resources as GianuahResources,
+} from "./characters/npc/Giaunah/Giaunah";
+
 import You from "./characters/player/You/You";
 import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
 
-const asepriteSpriteSheet = new AsepriteResource(
-    "./actors/player/You/You.json"
-);
-
 class Terrene extends Engine {
     constructor() {
-        super({ width: 800, height: 600 });
+        super({ displayMode: DisplayMode.FillScreen });
     }
 
     initialize() {
@@ -35,23 +36,43 @@ class Terrene extends Engine {
         const goblin = new Goblin();
         this.add(goblin);
 
-        goblin.actions.easeTo(vec(100, 100), 1000).follow(sally, 100);
+        wanderingMerchant.actions
+            .easeTo(vec(100, 100), 1000)
+            .follow(sally, 100);
 
-        const loader = new Loader([
-            Resources.OldManSam,
-            Resources.You,
-            Resources.Sword,
-            asepriteSpriteSheet,
-        ]);
-        this.start(loader).then(() => {
+        const asepriteSpriteSheet = new AsepriteResource(
+            "./characters/player/You/You.json"
+        );
+
+        const gianuah = new Gianuah();
+        this.add(gianuah);
+
+        this.start(
+            new Loader([
+                Resources.OldManSam,
+                Resources.You,
+                Resources.Sword,
+                asepriteSpriteSheet,
+                GianuahResources.Image,
+                GianuahResources.AsepriteResource,
+            ])
+        ).then(() => {
             this.addScene("mainmenu", new MainMenu());
             this.add(oldManSam);
             this.add(wanderingMerchant);
             this.add(sally);
             this.add(goblin);
+            this.add(gianuah);
 
-            const anim = asepriteSpriteSheet.getAnimation("Loop");
-            you.graphics.use(anim);
+            // const anim = Resources.YouSpriteSheet.getAnimation("Loop");
+            // you.graphics.use(anim);
+
+            // you.graphics.use(asepriteSpriteSheet.getAnimation("Loop") as any);
+
+            // const spritesheet = Resources.YouSpriteSheet.getSpriteSheet();
+            // const sprite = spritesheet?.getSprite(0, 1) as Sprite;
+
+            // you.graphics.use(sprite);
 
             this.add(you);
         });

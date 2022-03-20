@@ -12,6 +12,10 @@ class Goblin extends Actor {
 
     onInitialize() {
         this.graphics.add(Resources.Sword.toSprite());
+
+        this.actions
+            .delay(5000)
+            .repeatForever((ctx) => ctx.moveBy(200, 0, 20).moveBy(-200, 0, 20));
     }
 }
 

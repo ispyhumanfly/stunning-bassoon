@@ -1,0 +1,30 @@
+import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
+import { Actor, Die, ImageSource, vec } from "excalibur";
+import GiaunahImage from "./Giaunah.png";
+
+export default class Gianuah extends Actor {
+    constructor() {
+        super({
+            pos: vec(245, 245),
+            width: 100,
+            height: 100,
+        });
+    }
+
+    onInitialize() {
+        this.graphics.add(Resources.Image.toSprite());
+
+        this.actions
+            .delay(5000)
+            .repeatForever((ctx) => ctx.moveBy(200, 0, 33).moveBy(-200, 0, 44));
+    }
+}
+
+const Resources = {
+    Image: new ImageSource(GiaunahImage),
+    AsepriteResource: new AsepriteResource(
+        "./modules/characters/player/Gianuah/Gianuah.json"
+    ),
+};
+
+export { Resources };
