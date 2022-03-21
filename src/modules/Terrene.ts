@@ -10,8 +10,7 @@ import Gianuah, {
     Resources as GianuahResources,
 } from "./characters/npc/Giaunah/Giaunah";
 
-import You from "./characters/player/You/You";
-import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
+import You, { Resources as YouResources } from "./characters/player/You/You";
 
 class Terrene extends Engine {
     constructor() {
@@ -40,21 +39,17 @@ class Terrene extends Engine {
             .easeTo(vec(100, 100), 1000)
             .follow(sally, 100);
 
-        const asepriteSpriteSheet = new AsepriteResource(
-            "./characters/player/You/You.json"
-        );
-
         const gianuah = new Gianuah();
         this.add(gianuah);
 
         this.start(
             new Loader([
                 Resources.OldManSam,
-                Resources.You,
                 Resources.Sword,
-                asepriteSpriteSheet,
                 GianuahResources.Image,
                 GianuahResources.AsepriteResource,
+                YouResources.Image,
+                YouResources.AsepriteResource,
             ])
         ).then(() => {
             this.addScene("mainmenu", new MainMenu());
@@ -63,16 +58,6 @@ class Terrene extends Engine {
             this.add(sally);
             this.add(goblin);
             this.add(gianuah);
-
-            // const anim = Resources.YouSpriteSheet.getAnimation("Loop");
-            // you.graphics.use(anim);
-
-            // you.graphics.use(asepriteSpriteSheet.getAnimation("Loop") as any);
-
-            // const spritesheet = Resources.YouSpriteSheet.getSpriteSheet();
-            // const sprite = spritesheet?.getSprite(0, 1) as Sprite;
-
-            // you.graphics.use(sprite);
 
             this.add(you);
         });

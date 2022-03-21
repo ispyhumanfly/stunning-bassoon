@@ -12,7 +12,7 @@ export default class Gianuah extends Actor {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Image.toSprite());
+        this.graphics.use(Resources.Image.toSprite());
 
         this.actions
             .delay(5000)
@@ -23,7 +23,7 @@ export default class Gianuah extends Actor {
 const Resources = {
     Image: new ImageSource(GiaunahImage),
     AsepriteResource: new AsepriteResource(
-        "./modules/characters/player/Gianuah/Gianuah.json"
+        "./modules/characters/npc/Gianuah/Gianuah.json"
     ),
 };
 

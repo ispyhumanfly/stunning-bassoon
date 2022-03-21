@@ -1,10 +1,7 @@
-import { Engine, Actor, Die, Input, vec } from "excalibur";
-import { Resources } from "../../../../resources";
+import { Engine, Actor, Die, Input, vec, ImageSource } from "excalibur";
 import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
-
-const asepriteSpriteSheet = new AsepriteResource("./You.json");
-
-class You extends Actor {
+import YouImage from "./You.png";
+export default class You extends Actor {
     constructor() {
         super({
             pos: vec(300, 300),
@@ -14,12 +11,7 @@ class You extends Actor {
     }
 
     onInitialize(engine: Engine) {
-        this.graphics.use(asepriteSpriteSheet.getAnimation("Loop") as any);
-
-        // engine.input.pointers.primary.on("move", (evt) => {
-        //     this.pos.x = evt.worldPos.x;
-        //     this.pos.y = evt.worldPos.y;
-        // });
+        this.graphics.add(Resources.Image.toSprite());
 
         engine.input.keyboard.on("hold", (press) => {
             switch (press.key) {
@@ -44,4 +36,11 @@ class You extends Actor {
     }
 }
 
-export default You;
+const Resources = {
+    Image: new ImageSource(YouImage),
+    AsepriteResource: new AsepriteResource(
+        "./modules/characters/player/You/You.json"
+    ),
+};
+
+export { Resources };
