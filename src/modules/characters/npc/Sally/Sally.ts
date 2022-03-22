@@ -1,17 +1,17 @@
-import { Actor, Die, vec } from "excalibur";
+import { Actor, vec } from "excalibur";
 import { Resources } from "../../../../resources";
 
 class Sally extends Actor {
     constructor() {
         super({
-            pos: vec(200, 200),
-            width: 100,
-            height: 100,
+            pos: vec(500, 500),
+            width: 10,
+            height: 10,
         });
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Sword.toSprite());
+        this.graphics.add(Resources.Sally.toSprite());
         this.angularVelocity = 3;
         this.vel.y = 8;
     }

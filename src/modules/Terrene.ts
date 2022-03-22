@@ -45,6 +45,7 @@ class Terrene extends Engine {
         this.start(
             new Loader([
                 Resources.OldManSam,
+                Resources.Sally,
                 Resources.Sword,
                 GianuahResources.Image,
                 GianuahResources.AsepriteResource,
