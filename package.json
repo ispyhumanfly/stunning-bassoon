@@ -1,41 +1,43 @@
 {
-  "name": "@thoughtpivot/terrene",
-  "version": "1.0.0",
-  "private": true,
-  "description": "a webpack starter for excaliburjs projects",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run build:prod && node ./test/test.js",
-    "webpack": "webpack",
-    "dev": "webpack serve --config webpack.development.js",
-    "start": "npm run dev",
-    "build:dev": "webpack --config webpack.development.js",
-    "build:prod": "webpack --config webpack.production.js"
-  },
-  "author": "Excalibur.js Team",
-  "license": "BSD-2-Clause",
-  "devDependencies": {
-    "clean-webpack-plugin": "4.0.0",
-    "compression-webpack-plugin": "9.2.0",
-    "html-webpack-plugin": "5.5.0",
-    "node-static": "0.7.11",
-    "pixelmatch": "5.2.1",
-    "pngjs": "6.0.0",
-    "puppeteer": "13.5.1",
-    "source-map-loader": "3.0.1",
-    "terser-webpack-plugin": "5.3.1",
-    "ts-loader": "9.2.8",
-    "typescript": "4.7.0-dev.20220313",
-    "webpack": "5.70.0",
-    "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4",
-    "webpack-merge": "5.8.0"
-  },
-  "dependencies": {
-    "@excaliburjs/excalibur-tiled": "^2.3.1",
-    "@excaliburjs/plugin-aseprite": "^0.25.3",
-    "copy-webpack-plugin": "^8.1.1",
-    "excalibur": "0.25.3",
-    "file-loader": "^6.2.0"
-  }
+    "name": "@thoughtpivot/terrene",
+    "version": "1.0.0",
+    "private": true,
+    "main": "main.js",
+    "description": "a webpack starter for excaliburjs projects",
+    "scripts": {
+        "test": "npm run build:prod && node ./test/test.js",
+        "webpack": "webpack",
+        "dev": "npx tsc -p tsconfig.json && webpack serve --config webpack.development.js",
+        "start": "npm run dev",
+        "desktop": "npx electron .",
+        "build:dev": "webpack --config webpack.development.js",
+        "build:prod": "webpack --config webpack.production.js"
+    },
+    "author": "The Boys and Dad.",
+    "license": "MIT",
+    "devDependencies": {
+        "clean-webpack-plugin": "4.0.0",
+        "compression-webpack-plugin": "9.2.0",
+        "html-webpack-plugin": "5.5.0",
+        "node-static": "0.7.11",
+        "pixelmatch": "5.2.1",
+        "pngjs": "6.0.0",
+        "puppeteer": "13.5.1",
+        "source-map-loader": "3.0.1",
+        "terser-webpack-plugin": "5.3.1",
+        "ts-loader": "9.2.8",
+        "typescript": "4.6.3",
+        "webpack": "5.70.0",
+        "webpack-cli": "4.9.2",
+        "webpack-dev-server": "4.7.4",
+        "webpack-merge": "5.8.0"
+    },
+    "dependencies": {
+        "@excaliburjs/excalibur-tiled": "^2.3.1",
+        "@excaliburjs/plugin-aseprite": "^0.25.3",
+        "copy-webpack-plugin": "^8.1.1",
+        "electron": "^18.0.2",
+        "excalibur": "0.25.3",
+        "file-loader": "^6.2.0"
+    }
 }
