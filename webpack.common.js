@@ -47,7 +47,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      title: "Excalibur Webpack Sample",
+      title: "@thoughtpivot/terrene",
     }),
     new CopyPlugin(
         { patterns: [{ from: "./src/assets/Terrene.json", to: "./assets/Terrene.json"}, { from: "./src/assets/Terrene.tsx", to: "./assets/Terrene.tsx"}, { from: "./src/assets/tilemap.png", to: "./assets/tilemap.png"}]},

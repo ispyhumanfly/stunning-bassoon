@@ -7,7 +7,7 @@ import Sally from "./modules/characters/npc/Sally/Sally.png";
 const Resources = {
     Sword: new ImageSource(sword),
     OldManSam: new ImageSource(OldManSam),
-    Sally: new ImageSource(Sally)
+    Sally: new ImageSource(Sally),
 };
 
 export { Resources };

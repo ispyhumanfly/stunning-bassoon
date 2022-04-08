@@ -2,7 +2,7 @@
     "name": "@thoughtpivot/terrene",
     "version": "1.0.0",
     "private": true,
-    "main": "main.js",
+    "main": "main.ts",
     "description": "a webpack starter for excaliburjs projects",
     "scripts": {
         "test": "npm run build:prod && node ./test/test.js",
