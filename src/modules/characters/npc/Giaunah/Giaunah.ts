@@ -8,6 +8,7 @@ export default class Gianuah extends Actor {
             pos: vec(245, 245),
             width: 100,
             height: 100,
+            scale: vec(4, 4),
         });
     }
 

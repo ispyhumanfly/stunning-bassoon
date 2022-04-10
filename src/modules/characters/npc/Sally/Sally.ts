@@ -7,6 +7,7 @@ class Sally extends Actor {
             pos: vec(500, 500),
             width: 10,
             height: 10,
+            scale: vec(4, 4),
         });
     }
 

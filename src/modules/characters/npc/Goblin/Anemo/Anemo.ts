@@ -9,6 +9,7 @@ class Anemo extends Goblin {
             pos: vec(245, 245),
             width: 100,
             height: 100,
+            scale: vec(128, 128),
         });
     }
 

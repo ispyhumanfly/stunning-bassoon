@@ -7,6 +7,7 @@ class OldManSam extends Actor {
             pos: vec(150, 150),
             width: 200,
             height: 200,
+            scale: vec(4, 4),
         });
     }
 

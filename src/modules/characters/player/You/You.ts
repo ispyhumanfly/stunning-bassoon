@@ -7,6 +7,7 @@ export default class You extends Actor {
             pos: vec(300, 300),
             width: 128,
             height: 128,
+            scale: vec(4, 4),
         });
     }
 
