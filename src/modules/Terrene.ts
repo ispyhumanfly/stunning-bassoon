@@ -1,6 +1,6 @@
-import { DisplayMode, Engine, Loader, Sprite, vec } from "excalibur";
+import { DisplayMode, Engine, Loader, vec } from "excalibur";
 import OldManSam from "./characters/npc/OldManSam/OldManSam";
-import WanderingMerchant from "./characters/npc/WanderingMerchant/WanderingMerchant";
+import Navosah from "./characters/npc/WanderingMerchant/Navosah/Navosah";
 import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
 import Sally from "./characters/npc/Sally/Sally";
@@ -29,15 +29,13 @@ class Terrene extends Engine {
 
         oldManSam.actions.follow(sally, 100);
 
-        const wanderingMerchant = new WanderingMerchant();
-        this.add(wanderingMerchant);
+        const navosah = new Navosah();
+        this.add(navosah);
 
         const goblin = new Goblin();
         this.add(goblin);
 
-        wanderingMerchant.actions
-            .easeTo(vec(100, 100), 1000)
-            .follow(sally, 100);
+        navosah.actions.easeTo(vec(100, 100), 1000).follow(sally, 100);
 
         const gianuah = new Gianuah();
         this.add(gianuah);
@@ -55,7 +53,7 @@ class Terrene extends Engine {
         ).then(() => {
             this.addScene("mainmenu", new MainMenu());
             this.add(oldManSam);
-            this.add(wanderingMerchant);
+            this.add(navosah);
             this.add(sally);
             this.add(goblin);
             this.add(gianuah);
