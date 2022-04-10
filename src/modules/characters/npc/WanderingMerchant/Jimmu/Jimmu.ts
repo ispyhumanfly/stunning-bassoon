@@ -1,4 +1,4 @@
-import { Actor, Die, vec } from "excalibur";
+import { vec } from "excalibur";
 import { Resources } from "../../../../../resources";
 import WanderingMerchant from "../WanderingMerchant";
 

@@ -1,5 +1,6 @@
-import { Actor, Die, vec } from "excalibur";
-import { Resources } from "../../../../resources";
+import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
+import { Actor, Die, ImageSource, vec } from "excalibur";
+import GoblinImage from "./Goblin.png";
 
 class Goblin extends Actor {
     constructor() {
@@ -11,12 +12,21 @@ class Goblin extends Actor {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Sword.toSprite());
+        this.graphics.add(Resources.Image.toSprite());
 
         this.actions
             .delay(5000)
             .repeatForever((ctx) => ctx.moveBy(200, 0, 20).moveBy(-200, 0, 20));
     }
 }
+
+const Resources = {
+    Image: new ImageSource(GoblinImage),
+    AsepriteResource: new AsepriteResource(
+        "./modules/characters/npc/Goblin/Goblin.json"
+    ),
+};
+
+export { Resources };
 
 export default Goblin;

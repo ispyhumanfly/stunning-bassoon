@@ -4,7 +4,10 @@ import Navosah from "./characters/npc/WanderingMerchant/Navosah/Navosah";
 import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
 import Sally from "./characters/npc/Sally/Sally";
-import Goblin from "./characters/npc/Goblin/Goblin";
+
+import Goblin, {
+    Resources as GoblinResources,
+} from "./characters/npc/Goblin/Goblin";
 
 import Gianuah, {
     Resources as GianuahResources,
@@ -49,6 +52,8 @@ class Terrene extends Engine {
                 GianuahResources.AsepriteResource,
                 YouResources.Image,
                 YouResources.AsepriteResource,
+                GoblinResources.Image,
+                GoblinResources.AsepriteResource,
             ])
         ).then(() => {
             this.addScene("mainmenu", new MainMenu());
