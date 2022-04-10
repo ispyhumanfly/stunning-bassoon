@@ -5,9 +5,9 @@ import { Resources } from "../resources";
 import MainMenu from "./scenes/MainMenu";
 import Sally from "./characters/npc/Sally/Sally";
 
-import Goblin, {
-    Resources as GoblinResources,
-} from "./characters/npc/Goblin/Goblin";
+import Horus, {
+    Resources as HorusResources,
+} from "./characters/npc/Goblin/Horus/Horus";
 
 import Gianuah, {
     Resources as GianuahResources,
@@ -35,8 +35,11 @@ class Terrene extends Engine {
         const navosah = new Navosah();
         this.add(navosah);
 
-        const goblin = new Goblin();
-        this.add(goblin);
+        const horus1 = new Horus();
+        const horus2 = new Horus();
+
+        this.add(horus1);
+        this.add(horus2);
 
         navosah.actions.easeTo(vec(100, 100), 1000).follow(sally, 100);
 
@@ -52,15 +55,18 @@ class Terrene extends Engine {
                 GianuahResources.AsepriteResource,
                 YouResources.Image,
                 YouResources.AsepriteResource,
-                GoblinResources.Image,
-                GoblinResources.AsepriteResource,
+                HorusResources.Image,
+                HorusResources.AsepriteResource,
             ])
         ).then(() => {
             this.addScene("mainmenu", new MainMenu());
             this.add(oldManSam);
             this.add(navosah);
             this.add(sally);
-            this.add(goblin);
+
+            this.add(horus1);
+            this.add(horus2);
+
             this.add(gianuah);
 
             this.add(you);
