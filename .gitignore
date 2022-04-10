@@ -87,3 +87,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 src/modules/characters/npc/Sprite-0007.aseprite
+src/modules/characters/npc/Goblin/Anemo/AnemoGoblin.aseprite
+.gitignore
