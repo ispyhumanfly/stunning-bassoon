@@ -50,7 +50,7 @@ module.exports = {
       title: "@thoughtpivot/terrene",
     }),
     new CopyPlugin(
-        { patterns: [{ from: "./src/assets/Terrene.json", to: "./assets/Terrene.json"}, { from: "./src/assets/Terrene.tsx", to: "./assets/Terrene.tsx"}, { from: "./src/assets/tilemap.png", to: "./assets/tilemap.png"}]},
+        { patterns: [{ from: "./src/modules/scenes/MainMenu.json", to: "./scenes/MainMenu.json"}, { from: "./src/modules/scenes/MoonGraas/MoonGraas.tsx", to: "./scenes/MoonGraas/MoonGraas.tsx"}, { from: "./src/modules/scenes/MainMenu.png", to: "./scenes/MainMenu.png"}]},
     )
   ],
 };

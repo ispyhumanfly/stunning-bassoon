@@ -3,7 +3,7 @@ import { Actor, Die, ImageSource, vec } from "excalibur";
 import Goblin from "../Goblin";
 import AnemoImage from "./Horus.png";
 
-class Anemo extends Goblin {
+export default class Anemo extends Goblin {
     constructor() {
         super({
             pos: vec(245, 245),
@@ -30,5 +30,3 @@ const Resources = {
 };
 
 export { Resources };
-
-export default Anemo;
