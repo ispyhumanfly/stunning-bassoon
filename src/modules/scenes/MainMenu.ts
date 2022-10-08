@@ -9,8 +9,6 @@ class MainMenu extends Scene {
             tiledMap.addTiledMapToScene(this);
         });
     }
-
-    onDeactivate(_oldScene: Scene, _newScene: Scene): void {}
 }
 
 export default MainMenu;
