@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|mp3)$/i,
         type: "asset/resource",
       },
       {
@@ -50,7 +50,7 @@ module.exports = {
       title: "@thoughtpivot/terrene",
     }),
     new CopyPlugin(
-        { patterns: [{ from: "./src/modules/scenes/MainMenu.json", to: "./scenes/MainMenu.json"}, { from: "./src/modules/scenes/MoonGraas/MoonGraas.tsx", to: "./scenes/MoonGraas/MoonGraas.tsx"}, { from: "./src/modules/scenes/MainMenu.png", to: "./scenes/MainMenu.png"}]},
+        { patterns: [{ from: "./src/modules/scenes/MainMenu.json", to: "./scenes/MainMenu.json"}, { from: "./src/modules/scenes/MoonGraas/MoonGraas.tsx", to: "./scenes/MoonGraas/MoonGraas.tsx"}, { from: "./src/modules/scenes/MainMenu.png", to: "./scenes/MainMenu.png"}, { from: "./src/modules/characters/player/You/You.mp3", to: "./characters/player/You/You.mp3"}]},
     )
   ],
 };

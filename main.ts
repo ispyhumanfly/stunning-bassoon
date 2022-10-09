@@ -9,7 +9,7 @@ function createWindow() {
     });
 
     // and load the index.html of the app.
-    mainWindow.loadURL("http://10.0.0.113:8080");
+    mainWindow.loadURL("http://localhost:8081");
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()

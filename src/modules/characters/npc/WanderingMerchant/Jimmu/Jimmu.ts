@@ -1,8 +1,7 @@
-import { vec } from "excalibur";
-import { Resources } from "../../../../../resources";
+import { ImageSource, vec } from "excalibur";
 import WanderingMerchant from "../WanderingMerchant";
-
-class Jimmu extends WanderingMerchant {
+import JimmuImage from "./Jimmu.png";
+export default class Jimmu extends WanderingMerchant {
     constructor() {
         super({
             pos: vec(100, 100),
@@ -13,10 +12,13 @@ class Jimmu extends WanderingMerchant {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Sword.toSprite());
+        this.graphics.add(Resources.Image.toSprite());
         this.actions.blink(500, 190);
         this.vel.x = 8;
     }
 }
 
-export default Jimmu;
+const Resources = {
+    Image: new ImageSource(JimmuImage),
+};
+export { Resources };

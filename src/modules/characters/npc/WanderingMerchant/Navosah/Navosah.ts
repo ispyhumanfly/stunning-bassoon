@@ -1,8 +1,7 @@
-import { Actor, Die, vec } from "excalibur";
-import { Resources } from "../../../../../resources";
+import { Actor, Die, vec, ImageSource } from "excalibur";
 import WanderingMerchant from "../WanderingMerchant";
-
-class Novosah extends WanderingMerchant {
+import NovosahImage from "./Navosah.png";
+export default class Novosah extends WanderingMerchant {
     constructor() {
         super({
             pos: vec(100, 100),
@@ -13,10 +12,14 @@ class Novosah extends WanderingMerchant {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.Sword.toSprite());
+        this.graphics.add(Resources.Image.toSprite());
         this.actions.blink(500, 190);
         this.vel.x = 8;
     }
 }
 
-export default Novosah;
+const Resources = {
+    Image: new ImageSource(NovosahImage),
+};
+
+export { Resources };

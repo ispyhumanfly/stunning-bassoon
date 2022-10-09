@@ -1,7 +1,7 @@
-import { Actor, vec } from "excalibur";
-import { Resources } from "../../../../resources";
+import { Actor, vec, ImageSource } from "excalibur";
+import OldManSamImage from "./OldManSam.png";
 
-class OldManSam extends Actor {
+export default class OldManSam extends Actor {
     constructor() {
         super({
             pos: vec(150, 150),
@@ -12,9 +12,13 @@ class OldManSam extends Actor {
     }
 
     onInitialize() {
-        this.graphics.add(Resources.OldManSam.toSprite());
+        this.graphics.add(Resources.Image.toSprite());
         // this.vel.y = 8;
     }
 }
 
-export default OldManSam;
+const Resources = {
+    Image: new ImageSource(OldManSamImage),
+};
+
+export { Resources };

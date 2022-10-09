@@ -7,15 +7,23 @@ import {
     FontUnit,
     CoordPlane,
     Color,
+    Sound,
 } from "excalibur";
 
 import { TiledMapResource } from "@excaliburjs/plugin-tiled";
 
-import OldManSam from "./characters/npc/OldManSam/OldManSam";
-import Navosah from "./characters/npc/WanderingMerchant/Navosah/Navosah";
-import { Resources } from "../resources";
+import Navosah, {
+    Resources as NovosahResources,
+} from "./characters/npc/WanderingMerchant/Navosah/Navosah";
 import MainMenu from "./scenes/MainMenu";
-import Sally from "./characters/npc/Sally/Sally";
+
+import Sally, {
+    Resources as SallyResources,
+} from "./characters/npc/Sally/Sally";
+
+import OldManSam, {
+    Resources as OldManSamResources,
+} from "./characters/npc/OldManSam/OldManSam";
 
 import Horus, {
     Resources as HorusResources,
@@ -31,7 +39,7 @@ const tiledMap = new TiledMapResource("./scenes/MoonGraas/MoonGraas.tmx");
 
 class Terrene extends Engine {
     constructor() {
-        super({ displayMode: DisplayMode.FillScreen });
+        super({ displayMode: DisplayMode.FillScreen, maxFps: 45 });
     }
 
     initialize() {
@@ -76,16 +84,21 @@ class Terrene extends Engine {
         const gianuah = new Gianuah();
         this.add(gianuah);
 
+        const sound = new Sound("./modules/characters/npc/Gianuah/Gianuah.mp3");
+
         this.start(
             new Loader([
+                sound,
                 tiledMap,
-                Resources.OldManSam,
-                Resources.Sally,
-                Resources.Sword,
+                NovosahResources.Image,
+                OldManSamResources.Image,
+                SallyResources.Image,
                 GianuahResources.Image,
                 GianuahResources.AsepriteResource,
+                GianuahResources.Sound,
                 YouResources.Image,
                 YouResources.AsepriteResource,
+                YouResources.Sound,
                 HorusResources.Image,
                 HorusResources.AsepriteResource,
             ])
@@ -102,6 +115,10 @@ class Terrene extends Engine {
             this.add(gianuah);
 
             this.add(you);
+
+            sound.play(0.5);
+            GianuahResources.Sound.play(1.0);
+            YouResources.Sound.play();
         });
     }
 }

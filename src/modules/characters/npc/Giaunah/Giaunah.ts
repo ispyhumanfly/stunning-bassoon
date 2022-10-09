@@ -1,5 +1,5 @@
 import { AsepriteResource } from "@excaliburjs/plugin-aseprite";
-import { Actor, Die, ImageSource, vec } from "excalibur";
+import { Actor, Die, ImageSource, vec, Sound } from "excalibur";
 import GiaunahImage from "./Giaunah.png";
 
 export default class Gianuah extends Actor {
@@ -26,6 +26,7 @@ const Resources = {
     AsepriteResource: new AsepriteResource(
         "./modules/characters/npc/Gianuah/Gianuah.json"
     ),
+    Sound: new Sound("./modules/characters/npc/Gianuah/Gianuah.mp3"),
 };
 
 export { Resources };
