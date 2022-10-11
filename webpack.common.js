@@ -34,6 +34,10 @@ module.exports = {
         use: 'file-loader',
         type: 'javascript/auto'
       },
+      {
+        test: [/\.tm(x|j)$/, /\.ts(x|j)$/],
+        use: 'raw-loader'
+     }
     ],
   },
   resolve: {
@@ -49,8 +53,6 @@ module.exports = {
     new HtmlWebPackPlugin({
       title: "@thoughtpivot/terrene",
     }),
-    new CopyPlugin(
-        { patterns: [{ from: "./src/modules/scenes/MainMenu.json", to: "./scenes/MainMenu.json"}, { from: "./src/modules/scenes/MoonGraas/MoonGraas.tsx", to: "./scenes/MoonGraas/MoonGraas.tsx"}, { from: "./src/modules/scenes/MainMenu.png", to: "./scenes/MainMenu.png"}, { from: "./src/modules/characters/player/You/You.mp3", to: "./characters/player/You/You.mp3"}]},
-    )
+    new CopyPlugin({ patterns: [{ from: "./src/modules", to: "./modules"}, {from: "./src/assets", to: "./assets"}]})
   ],
 };

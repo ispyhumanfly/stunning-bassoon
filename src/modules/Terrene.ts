@@ -8,14 +8,22 @@ import {
     CoordPlane,
     Color,
     Sound,
+    Font,
+    Transform,
+    Input,
 } from "excalibur";
 
 import { TiledMapResource } from "@excaliburjs/plugin-tiled";
 
+// import tiledMap from "./cities/Craydon/Craydon.tmx";
+
+const tiledMapResource = new TiledMapResource("./cities/Craydon/Craydon.tmx");
+
 import Navosah, {
     Resources as NovosahResources,
 } from "./characters/npc/WanderingMerchant/Navosah/Navosah";
-import MainMenu from "./scenes/MainMenu";
+// import MainMenu from "./scenes/MainMenu";
+import Craydon from "./cities/Craydon/Craydon";
 
 import Sally, {
     Resources as SallyResources,
@@ -35,61 +43,20 @@ import Gianuah, {
 
 import You, { Resources as YouResources } from "./characters/player/You/You";
 
-const tiledMap = new TiledMapResource("./scenes/MoonGraas/MoonGraas.tmx");
-
 class Terrene extends Engine {
     constructor() {
-        super({ displayMode: DisplayMode.FillScreen, maxFps: 45 });
+        super({
+            displayMode: DisplayMode.FillScreen,
+            maxFps: 45,
+            pointerScope: Input.PointerScope.Canvas,
+            antialiasing: false,
+        });
     }
 
     initialize() {
-        const scoreLabel = new Label({
-            text: "Score: " + 10,
-            pos: new Vector(20, 30),
-        });
-        scoreLabel.font.quality = 3;
-        scoreLabel.font.size = 30;
-        scoreLabel.font.unit = FontUnit.Px;
-        scoreLabel.font.family = "Terminal";
-        scoreLabel.transform.coordPlane = CoordPlane.Screen;
-        scoreLabel.color = Color.Cyan;
-        scoreLabel.on("preupdate", function (this: Label, evt) {
-            this.text = "Score: " + 12;
-        });
-
-        this.add(scoreLabel);
-
-        const you = new You();
-        this.add(you);
-
-        const oldManSam = new OldManSam();
-        this.add(oldManSam);
-
-        const sally = new Sally();
-        this.add(sally);
-
-        oldManSam.actions.follow(sally, 100);
-
-        const navosah = new Navosah();
-        this.add(navosah);
-
-        const horus1 = new Horus();
-        const horus2 = new Horus();
-
-        this.add(horus1);
-        this.add(horus2);
-
-        navosah.actions.easeTo(new Vector(100, 100), 1000).follow(sally, 100);
-
-        const gianuah = new Gianuah();
-        this.add(gianuah);
-
-        const sound = new Sound("./modules/characters/npc/Gianuah/Gianuah.mp3");
-
         this.start(
             new Loader([
-                sound,
-                tiledMap,
+                tiledMapResource,
                 NovosahResources.Image,
                 OldManSamResources.Image,
                 SallyResources.Image,
@@ -103,22 +70,70 @@ class Terrene extends Engine {
                 HorusResources.AsepriteResource,
             ])
         ).then(() => {
-            this.addScene("mainmenu", new MainMenu());
-            tiledMap.addTiledMapToScene(this.currentScene);
+            this.addScene("craydon", new Craydon());
+            tiledMapResource.addTiledMapToScene(this.currentScene);
+            // this.goToScene("craydon");
+
+            let score = 10;
+            const scoreLabel = new Label({
+                text: "Score: " + score,
+                pos: new Vector(20, 30),
+                font: new Font({
+                    quality: 3,
+                    size: 30,
+                    unit: FontUnit.Px,
+                    family: "Termianl",
+                    color: Color.Cyan,
+                }),
+            });
+
+            const manaLabel = new Label({
+                text: "Mana: " + 100,
+                pos: new Vector(100, 50),
+            });
+
+            this.add(scoreLabel);
+            this.add(manaLabel);
+
+            const you = new You();
+            this.add(you);
+
+            const oldManSam = new OldManSam();
             this.add(oldManSam);
-            this.add(navosah);
+
+            const sally = new Sally();
             this.add(sally);
+
+            sally.actions.repeatForever((action) => {
+                action.meet(you, 100).die();
+            });
+
+            oldManSam.actions.follow(sally, 100);
+
+            const navosah = new Navosah();
+            this.add(navosah);
+
+            navosah.actions.follow(sally, 500);
+
+            const horus1 = new Horus();
+            const horus2 = new Horus();
 
             this.add(horus1);
             this.add(horus2);
 
+            const gianuah = new Gianuah();
             this.add(gianuah);
 
-            this.add(you);
-
-            sound.play(0.5);
-            GianuahResources.Sound.play(1.0);
-            YouResources.Sound.play();
+            // this.add(oldManSam);
+            // this.add(navosah);
+            // this.add(sally);
+            // this.add(horus1);
+            // this.add(horus2);
+            // this.add(gianuah);
+            // this.add(you);
+            // if (YouResources.Sound.isLoaded()) {
+            //     YouResources.Sound.play(0.5);
+            // }
         });
     }
 }

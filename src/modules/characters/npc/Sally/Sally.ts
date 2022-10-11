@@ -1,4 +1,4 @@
-import { Actor, vec, ImageSource } from "excalibur";
+import { Actor, vec, ImageSource, Timer } from "excalibur";
 import SallyImage from "./Sally.png";
 export default class Sally extends Actor {
     constructor() {
@@ -13,7 +13,16 @@ export default class Sally extends Actor {
     onInitialize() {
         this.graphics.add(Resources.Image.toSprite());
         this.angularVelocity = 3;
-        this.vel.y = 8;
+        this.vel.y = 5;
+
+        this.on("collisionstart", () => {
+            this.angularVelocity = 5;
+            this.vel.y = 25;
+        });
+        this.on("collisionend", () => {
+            this.angularVelocity = 3;
+            this.vel.y = 5;
+        });
     }
 }
 

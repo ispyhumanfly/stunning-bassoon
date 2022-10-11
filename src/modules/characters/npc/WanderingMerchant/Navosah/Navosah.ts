@@ -5,9 +5,9 @@ export default class Novosah extends WanderingMerchant {
     constructor() {
         super({
             pos: vec(100, 100),
-            width: 100,
-            height: 100,
-            scale: vec(4, 4),
+            width: 5,
+            height: 5,
+            scale: vec(1, 1),
         });
     }
 

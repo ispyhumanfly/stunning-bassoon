@@ -39,6 +39,7 @@
         "copy-webpack-plugin": "^11.0.0",
         "electron": "^20.2.0",
         "excalibur": "0.27.0",
-        "file-loader": "^6.2.0"
+        "file-loader": "^6.2.0",
+        "raw-loader": "^4.0.2"
     }
 }

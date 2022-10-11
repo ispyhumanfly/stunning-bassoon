@@ -15,8 +15,6 @@ export default class You extends Actor {
         this.graphics.add(Resources.Image.toSprite());
 
         const sound = new Sound("./modules/characters/player/You/You.mp3");
-        sound.loop;
-        sound.play(1.0);
 
         engine.input.keyboard.on("hold", (press) => {
             switch (press.key) {
@@ -31,8 +29,10 @@ export default class You extends Actor {
                 case Input.Keys.Left:
                 case Input.Keys.A:
                     this.pos.x = this.pos.x - 10;
-                    sound.loop = true;
-                    sound.play(1.0);
+                    if (sound.isLoaded) {
+                        sound.loop = true;
+                        sound.play(1.0);
+                    }
 
                     break;
                 case Input.Keys.Right:
